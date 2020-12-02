@@ -70,16 +70,16 @@ include:
   - .htaccess
 
 exclude:
-  - CNAME
+  # - CNAME
   - Gemfile
   - Gemfile.lock
   - LICENSE
-  - CHANGELOG.md
+  # - CHANGELOG.md
   - README.md
   - node_modules
-  - CODE_OF_CONDUCT.md
-  - CONTRIBUTING.md
-  - lighthouse.png
+  # - CODE_OF_CONDUCT.md
+  # - CONTRIBUTING.md
+  # - lighthouse.png
   - klise-*.gem
   - klise.gemspec
 
