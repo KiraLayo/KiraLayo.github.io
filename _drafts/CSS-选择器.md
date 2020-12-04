@@ -204,8 +204,6 @@ p.important {
 
 ## 后代选择器
 
-**descendant selector**
-
 又称为包含选择器，后代选择器可以选择作为某元素后代的元素。
 
 根据上下文选择元素
@@ -238,8 +236,6 @@ table.company td > p
 
 ## 相邻兄弟选择器
 
-**Adjacent sibling selector**
-
 选择**紧接**在另一元素后的元素，且二者有相同父元素。
 
 ```css
@@ -267,23 +263,6 @@ selector : pseudo-class {property: value}
 selector.class : pseudo-class {property: value}
 ```
 
-### 锚伪类
-
-链接的不同状态都可以不同的方式显示，活动状态，已被访问状态，未被访问状态，和鼠标悬停状态。
-
-```css
-a:link {color: #FF0000}		/* 未访问的链接 */
-a:visited {color: #00FF00}	/* 已访问的链接 */
-a:hover {color: #FF00FF}	/* 鼠标移动到链接上 */
-a:active {color: #0000FF}	/* 选定的链接 */
-```
-
-**注意**
-
-- a:hover 必须被置于 a:link 和 a:visited 之后，才是有效的。
-- a:active 必须被置于 a:hover 之后，才是有效的。
-- 伪类名称对大小写不敏感。
-
 ### 伪类与 CSS 类
 
 ```css
@@ -294,14 +273,61 @@ a.red : visited {color: #FF0000}
 <a class="red" href="css_syntax.asp">CSS Syntax</a>
 ```
 
-### :first-child 伪类
-
-CSS引入
-
-是子元素，且是第一
+### 多重伪类
 
 ```css
-p:first-child {/*第一个为p的元素*/}
-li:first-child {/*第一个为li的元素*/}
+table tr:nth-child(2n+1):nth-child(5n){
+	/*...*/
+}
 ```
+
+## 伪元素
+
+CSS 伪元素用于向某些选择器设置特殊效果。
+
+```css
+selector::pseudo-element {property:value;}
+```
+
+```css
+selector.class::pseudo-element {property:value;}
+```
+
+### 伪元素和 CSS 类
+
+```css
+p.article:first-letter {
+  /**/
+}
+```
+
+### 多重伪元素
+
+```css c s
+p:first-letter {
+	/**/
+}
+/*结合在一起*/
+p:first-line {
+	/**/
+}
+```
+
+## 伪类与伪元素区别
+
+在CSS2时，它俩的翻译的是相同的，语法也相同，CSS3作出了改变。
+
+**总结**
+
+- 伪类本质上是为了弥补常规CSS选择器的不足，以便获取到更多信息；
+  - 匹配的是标签
+- 伪元素本质上是创建了一个有内容的虚拟容器；
+  - 内容就是匹配到的元素中value的内容，将内容放到虚拟容器中，添加规则。
+  - 匹配的是标签中的value
+- CSS3中伪类和伪元素的语法不同；
+  - 根据兼容性，也可以使用CSS2的语法；
+- 可以同时使用多个伪类，而只能同时使用一个伪元素；
+  - 也就是规则左侧可以同时有多个伪类，但是只能有一个伪元素；
+
+[**选择器参考手册**](https://www.w3school.com.cn/cssref/css_selectors.asp )
 
