@@ -4,12 +4,13 @@ categorys:
   - 前端
 tags:
   - CSS
-  - HTML
 ---
+
+css中肯定会用到需要匹配具体元素的情况，本文章是css选择器的一些简单介绍。
 
 ## 元素选择器/类型选择器
 
-匹配文档语言元素类型的名称，匹配文档树中该元素类型的每一个实例。
+匹配文档元素类型的名称，匹配文档树中该元素类型的每一个实例。
 
 ```css
 html {
@@ -42,11 +43,21 @@ CSS2 引入
 ### 声明分组
 
 ```css
-h1 {font: 28px Verdana;}
-h1 {color: blue;}
-h1 {background: red;}
+h1 {
+  font: 28px Verdana;
+}
+h1 {
+  color: blue;
+}
+h1 {
+  background: red;
+}
 // 同等
-h1 {font: 28px Verdana; color: white; background: black;}
+h1 {
+  font: 28px Verdana; 
+  color: white; 
+  background: black;
+}
 ```
 
 ## 类选择器
@@ -69,7 +80,9 @@ h1 {font: 28px Verdana; color: white; background: black;}
 
 ```css
 /*匹配class值为important的p元素*/
-p.important {/*...*/}
+p.important {
+  /*...*/
+}
 ```
 
 ### 多类选择器
@@ -77,7 +90,9 @@ p.important {/*...*/}
 选择**同时**包含这些类名的元素（类名的顺序不限）。
 
 ```css
-.important.urgent {/*...*/}
+.important.urgent {
+  /*...*/
+}
 ```
 
 > **注意**
@@ -102,7 +117,6 @@ ID 选择器允许以一种独立于文档元素的方式来指定样式。
  - 不能使用 ID 词列表
  - ID 可能匹配多个规则
  - ID 区分大小写
-
 
 ## 属性选择器
 
@@ -178,7 +192,7 @@ p.important {
 
 #### 子串匹配属性选择器
 
-引用W3
+**引用于W3**
 
 | 选择器               | 描述                                                         |
 | :------------------- | :----------------------------------------------------------- |
@@ -214,9 +228,7 @@ li strong {
 }
 ```
 
-元素之间的层次间隔可以是**无限的**
-
-会寻找元素继承中**所有**派生元素，无论嵌套层次有多深。
+元素之间的层次间隔可以是**无限的**，会寻找元素继承中**所有**派生元素，无论嵌套层次有多深。
 
 ## 子元素选择器
 
@@ -231,7 +243,9 @@ h1 > strong {
 ### 结合其他选择器
 
 ```css
-table.company td > p
+table.company td > p {
+  /*...*/
+}
 ```
 
 ## 相邻兄弟选择器
@@ -246,7 +260,21 @@ h1 + p {
 ### 结合其他选择器
 
 ```css
-html > body table + ul {/*...*/}
+html > body table + ul {
+  /*...*/
+}
+```
+
+## 同级元素选择器
+
+CSS3引入
+
+选择在另一元素后的元素，且二者有相同父元素。
+
+```css
+abc ~ def {
+	/*...*/
+}
 ```
 
 ## 伪类
@@ -256,17 +284,23 @@ html > body table + ul {/*...*/}
 ### 语法
 
 ```css
-selector : pseudo-class {property: value}
+selector : pseudo-class {
+  /*...*/
+}
 ```
 
 ```css
-selector.class : pseudo-class {property: value}
+selector.class : pseudo-class {
+  /*...*/
+}
 ```
 
 ### 伪类与 CSS 类
 
 ```css
-a.red : visited {color: #FF0000}
+a.red : visited {
+  /*...*/
+}
 ```
 
 ```html
@@ -281,23 +315,53 @@ table tr:nth-child(2n+1):nth-child(5n){
 }
 ```
 
+| 属性                 | 描述                                                         | CSS  |
+| :------------------- | :----------------------------------------------------------- | :--- |
+| :active              | 向被激活的元素添加样式。                                     | 1    |
+| :focus               | 向拥有键盘输入焦点的元素添加样式。                           | 2    |
+| :hover               | 当鼠标悬浮在元素上方时，向元素添加样式。                     | 1    |
+| :link                | 向未被访问的链接添加样式。                                   | 1    |
+| :visited             | 向已被访问的链接添加样式。                                   | 1    |
+| :first-child         | 向元素的第一个子元素添加样式。                               | 2    |
+| :lang                | 向带有指定 lang 属性的元素添加样式。                         | 2    |
+| :enabled             | 匹配表单中激活的元素                                         | 3    |
+| :disabled            | 匹配表单中禁用的元素                                         | 3    |
+| :checked             | 匹配表单中被选中的radio（单选框）或checkbox（复选框）元素    | 3    |
+| ::selection          | 匹配用户当前选中的元素                                       | 3    |
+| :root                | 匹配文档的根元素，对于HTML文档，就是HTML元素                 | 3    |
+| :nth-child(n)        | 匹配其父元素的第n个子元素，第一个编号为1                     | 3    |
+| :nth-last-child(n)   | 匹配其父元素的倒数第n个子元素，第一个编号为1                 | 3    |
+| :nth-of-type(n)      | 与:nth-child()作用类似，但是仅匹配使用同种标签的元素         | 3    |
+| :nth-last-of-type(n) | 与:nth-last-child() 作用类似，但是仅匹配使用同种标签的元素   | 3    |
+| :last-child          | 匹配父元素的最后一个子元素，等同于:nth-last-child(1)         | 3    |
+| :first-of-type       | 匹配父元素下使用同种标签的第一个子元素，等同于:nth-of-type(1) | 3    |
+| :last-of-type        | 匹配父元素下使用同种标签的最后一个子元素，等同于:nth-last-of-type(1) | 3    |
+| :only-child          | 匹配父元素下仅有的一个子元素，等同于:first-child:last-child或 :nth-child(1):nth-last-child(1) | 3    |
+| :only-of-type        | 匹配父元素下使用同种标签的唯一一个子元素，等同于:first-of-type:last-of-type或 :nth-of-type(1):nth-last-of-type(1) | 3    |
+| :empty               | 匹配一个不包含任何子元素的元素，注意，文本节点也被看作子元素 | 3    |
+| :not(s)              | 匹配不符合当前选择器的任何元素                               | 3    |
+
 ## 伪元素
 
 CSS 伪元素用于向某些选择器设置特殊效果。
 
 ```css
-selector::pseudo-element {property:value;}
+selector::pseudo-element {
+  /*...*/
+}
 ```
 
 ```css
-selector.class::pseudo-element {property:value;}
+selector.class::pseudo-element {
+  /*...*/
+}
 ```
 
 ### 伪元素和 CSS 类
 
 ```css
 p.article:first-letter {
-  /**/
+  /*...*/
 }
 ```
 
@@ -305,13 +369,20 @@ p.article:first-letter {
 
 ```css c s
 p:first-letter {
-	/**/
+  /*...*/
 }
 /*结合在一起*/
 p:first-line {
-	/**/
+  /*...*/
 }
 ```
+
+| 属性          | 描述                             | CSS  |
+| :------------ | :------------------------------- | :--- |
+| :first-letter | 向文本的第一个字母添加特殊样式。 | 1    |
+| :first-line   | 向文本的首行添加特殊样式。       | 1    |
+| :before       | 在元素之前添加内容。             | 2    |
+| :after        | 在元素之后添加内容。             | 2    |
 
 ## 伪类与伪元素区别
 
@@ -329,5 +400,13 @@ p:first-line {
 - 可以同时使用多个伪类，而只能同时使用一个伪元素；
   - 也就是规则左侧可以同时有多个伪类，但是只能有一个伪元素；
 
-[**选择器参考手册**](https://www.w3school.com.cn/cssref/css_selectors.asp )
+[**选择器参考手册**](https://www.w3school.com.cn/cssref/css_selectors.asp)
+
+---
+
+**参考**
+
+[阮一峰-CSS选择器笔记](http://www.ruanyifeng.com/blog/2009/03/css_selectors.html)
+
+[W3School-CSS 选择器参考手册](https://www.w3school.com.cn/cssref/css_selectors.asp)
 
