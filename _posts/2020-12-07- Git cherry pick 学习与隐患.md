@@ -1,6 +1,5 @@
 ---
-title:	cherry-pick学习与隐患
-categorys:	
+categorys:
   - 代码管理
 tags:	
   - Git

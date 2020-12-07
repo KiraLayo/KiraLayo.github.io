@@ -1,5 +1,4 @@
 ---
-title:	block、inline、inline-block区别
 categorys:
   - 前端
 tags:
