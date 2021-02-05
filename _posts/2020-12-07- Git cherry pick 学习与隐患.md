@@ -24,12 +24,12 @@ $ git cherry-pick f
 ```bash
 a - b - c - d   Master
      \
-       e - f - g Feature
+       e - f - g    Feature
 
 # cherry-pick f
 a - b - c - d - f   Master
      \
-       e - f - g Feature
+       e - f - g    Feature
 ```
 
 ## 转移多个提交
